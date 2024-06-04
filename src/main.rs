@@ -17,8 +17,12 @@ fn correct_borrow() {
 }
 fn pointer_borrow() {
     let my_string = "Hello!";
-    let returned_string = borrow_and_return_ptr(my_string);
+    let returned_string = borrow_and_return_ptr(my_string); // No need to store it in returned_string
     println!("Returned value is {}", returned_string); //This works as we are accessing string pointer and not string
+    println!("Returned value is {}", my_string);
+    if my_string==returned_string {
+        println!("They are the same pointers!");
+    }
 }
 fn incorrect_borrow() {
     let my_string = String::from("Hello!");
@@ -31,5 +35,5 @@ fn main() {
     //Uncomment one at a time to observe
     correct_borrow();
     //pointer_borrow();
-    //incorrect_borrow();
+    //incorrect_borrow();   
 }
